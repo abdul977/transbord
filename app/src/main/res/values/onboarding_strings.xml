@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding -->
+    <string name="onboarding_image">Onboarding illustration</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="get_started_now">Get Started Now</string>
+    
+    <!-- Onboarding Page 1 -->
+    <string name="onboarding_title_1">Welcome to Transbord</string>
+    <string name="onboarding_desc_1">Transbord helps you convert your speech into text anywhere on your device, making communication faster and easier.</string>
+    
+    <!-- Onboarding Page 2 -->
+    <string name="onboarding_title_2">Record and Transcribe</string>
+    <string name="onboarding_desc_2">Tap the microphone button to start recording. When you\'re done, tap again to stop and transcribe your speech.</string>
+    
+    <!-- Onboarding Page 3 -->
+    <string name="onboarding_title_3">Floating Button Mode</string>
+    <string name="onboarding_desc_3">Long-press the microphone button to activate the floating button. This allows you to transcribe text directly into any app.</string>
+    
+    <!-- Onboarding Page 4 -->
+    <string name="onboarding_title_4">AI Enhancement</string>
+    <string name="onboarding_desc_4">Use our AI tools to enhance your transcriptions. Correct grammar, summarize content, or format your text with a single tap.</string>
+</resources>

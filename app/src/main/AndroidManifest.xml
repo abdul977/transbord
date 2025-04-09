@@ -60,6 +60,11 @@
             android:name=".AboutActivity"
             android:exported="false" />
 
+        <!-- Onboarding Activity -->
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="false" />
+
         <!-- Overlay Service -->
         <service
             android:name=".services.OverlayService"
