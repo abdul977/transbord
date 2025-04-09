@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -59,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        // Set up toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
 
         // Initialize views
         fabRecord = findViewById(R.id.fab_record);
@@ -136,9 +145,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Settings button click listener
         ivSettings.setOnClickListener(v -> {
-            // Navigate to SavedTranscriptionsActivity
-            Intent intent = new Intent(MainActivity.this, SavedTranscriptionsActivity.class);
-            startActivity(intent);
+            // Show options menu
+            openOptionsMenu();
         });
     }
 
@@ -264,5 +272,30 @@ public class MainActivity extends AppCompatActivity {
         homeIntent.addCategory(Intent.CATEGORY_HOME);
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(homeIntent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_saved) {
+            // Navigate to SavedTranscriptionsActivity
+            Intent intent = new Intent(MainActivity.this, SavedTranscriptionsActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_about) {
+            // Navigate to AboutActivity
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

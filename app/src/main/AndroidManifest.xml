@@ -55,6 +55,11 @@
             android:name=".ReasoningActivity"
             android:exported="false" />
 
+        <!-- About Activity -->
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+
         <!-- Overlay Service -->
         <service
             android:name=".services.OverlayService"

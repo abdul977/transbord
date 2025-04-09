@@ -77,4 +77,11 @@
     <string name="enhance_options">Enhance Options</string>
     <string name="text_copy_hint">Long press to select and copy text</string>
     <string name="processing_transcription">Processing transcription…</string>
+
+    <!-- Developer Information -->
+    <string name="developed_by">Developed by</string>
+    <string name="developer_name">Muahib Solutions</string>
+    <string name="developer_tagline">Innovative Solutions for Modern Challenges</string>
+    <string name="copyright">© 2025 Muahib Solutions. All rights reserved.</string>
+    <string name="about">About</string>
 </resources>
