@@ -2,9 +2,12 @@ package com.example.transbord;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.transbord.data.Transcription;
 import com.example.transbord.data.TranscriptionRepository;
 import com.example.transbord.data.TranscriptionViewModel;
+import com.example.transbord.utils.TemplateManager;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.File;
@@ -48,6 +52,8 @@ public class TranscriptionActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private TranscriptionViewModel transcriptionViewModel;
     private long transcriptionId = -1; // -1 means new transcription
+    private TemplateManager templateManager;
+    private SharedPreferences templatePrefs;
 
     private ActivityResultLauncher<Intent> reasoningLauncher;
 
@@ -82,6 +88,11 @@ public class TranscriptionActivity extends AppCompatActivity {
         // Initialize ViewModel
         transcriptionViewModel = new ViewModelProvider(this).get(TranscriptionViewModel.class);
 
+        // Initialize template manager
+        templateManager = new TemplateManager(this);
+        templatePrefs = getSharedPreferences("template_settings", MODE_PRIVATE);
+        boolean autoFormatEnabled = templatePrefs.getBoolean("auto_format_enabled", false);
+
         // Set up edge-to-edge display
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -110,6 +121,17 @@ public class TranscriptionActivity extends AppCompatActivity {
                 });
             } else if (transcriptionText != null) {
                 tvTranscription.setText(transcriptionText);
+
+                // Apply auto-formatting if enabled
+                if (templatePrefs.getBoolean("auto_format_enabled", false)) {
+                    int templateType = templateManager.detectTemplateType(transcriptionText);
+                    if (templateType > 0) {
+                        String formattedText = templateManager.formatText(transcriptionText, templateType);
+                        tvTranscription.setText(formattedText);
+                        transcriptionText = formattedText;
+                        Toast.makeText(this, R.string.template_applied, Toast.LENGTH_SHORT).show();
+                    }
+                }
 
                 // Auto-save if requested (from overlay service)
                 if (autoSave) {
@@ -291,5 +313,44 @@ public class TranscriptionActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(R.string.no, null)
                 .show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_transcription, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_format_email) {
+            String formatted = templateManager.formatAsEmail(transcriptionText);
+            tvTranscription.setText(formatted);
+            transcriptionText = formatted;
+            Toast.makeText(this, R.string.template_applied, Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_format_list) {
+            String formatted = templateManager.formatAsList(transcriptionText);
+            tvTranscription.setText(formatted);
+            transcriptionText = formatted;
+            Toast.makeText(this, R.string.template_applied, Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_format_notes) {
+            String formatted = templateManager.formatText(transcriptionText, TemplateManager.TEMPLATE_NOTES);
+            tvTranscription.setText(formatted);
+            transcriptionText = formatted;
+            Toast.makeText(this, R.string.template_applied, Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_format_meeting) {
+            String formatted = templateManager.formatAsMeetingNotes(transcriptionText);
+            tvTranscription.setText(formatted);
+            transcriptionText = formatted;
+            Toast.makeText(this, R.string.template_applied, Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

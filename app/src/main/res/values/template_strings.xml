@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Templates -->
+    <string name="templates">Templates</string>
+    <string name="template_settings">Template Settings</string>
+    <string name="format_text">Format Text</string>
+    <string name="auto_format">Auto-format</string>
+    <string name="enable_auto_format">Enable auto-formatting</string>
+    <string name="auto_format_description">Automatically detect and apply formatting based on content</string>
+    
+    <!-- Template Types -->
+    <string name="template_email">Email</string>
+    <string name="template_list">List</string>
+    <string name="template_notes">Notes</string>
+    <string name="template_meeting">Meeting Notes</string>
+    <string name="template_custom">Custom Template</string>
+    <string name="no_template">No Template</string>
+    
+    <!-- Template Actions -->
+    <string name="format_as_email">Format as Email</string>
+    <string name="format_as_list">Format as List</string>
+    <string name="format_as_notes">Format as Notes</string>
+    <string name="format_as_meeting">Format as Meeting Notes</string>
+    <string name="add_custom_template">Add Custom Template</string>
+    <string name="edit_template">Edit Template</string>
+    <string name="delete_template">Delete Template</string>
+    
+    <!-- Template Dialog -->
+    <string name="template_name">Template Name</string>
+    <string name="template_pattern">Detection Pattern</string>
+    <string name="template_format">Format</string>
+    <string name="template_pattern_hint">Regular expression to detect this template</string>
+    <string name="template_format_hint">Format string (use %s for the original text)</string>
+    <string name="template_added">Template added</string>
+    <string name="template_updated">Template updated</string>
+    <string name="template_deleted">Template deleted</string>
+    <string name="template_applied">Template applied</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Voice Commands -->
+    <string name="voice_commands">Voice Commands</string>
+    <string name="voice_commands_active">Voice commands active</string>
+    <string name="voice_commands_activated">Voice commands activated</string>
+    <string name="voice_commands_deactivated">Voice commands deactivated</string>
+    <string name="listening_for_hotword">Listening for \"%1$s\"</string>
+    <string name="hotword_detected">Hotword detected</string>
+    <string name="command_recognized">Command recognized: %1$s</string>
+    <string name="microphone_permission_required">Microphone permission is required for voice commands</string>
+    
+    <!-- Voice Command Settings -->
+    <string name="voice_command_settings">Voice Command Settings</string>
+    <string name="enable_voice_commands">Enable voice commands</string>
+    <string name="hotword">Hotword</string>
+    <string name="change_hotword">Change hotword</string>
+    <string name="current_hotword">Current hotword: %1$s</string>
+    <string name="enter_new_hotword">Enter new hotword</string>
+    <string name="available_commands">Available Commands</string>
+    <string name="command_start_recording">\"Start recording\"</string>
+    <string name="command_stop_recording">\"Stop recording\"</string>
+    <string name="command_save">\"Save\"</string>
+    <string name="command_cancel">\"Cancel\"</string>
+    <string name="command_enhance">\"Enhance\"</string>
+    <string name="command_format_email">\"Format as email\"</string>
+    <string name="command_format_list">\"Format as list\"</string>
+    <string name="command_format_notes">\"Format as notes\"</string>
+</resources>

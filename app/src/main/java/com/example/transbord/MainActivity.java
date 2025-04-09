@@ -29,10 +29,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.transbord.api.GroqApiClient;
 import com.example.transbord.api.TranscriptionResponse;
+import com.example.transbord.services.HotwordService;
 import com.example.transbord.services.OverlayService;
 import com.example.transbord.utils.AccessibilityUtil;
 import com.example.transbord.utils.AudioRecorder;
 import com.example.transbord.utils.PermissionManager;
+import com.example.transbord.utils.VoiceCommandManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
@@ -54,10 +56,14 @@ public class MainActivity extends AppCompatActivity {
     private boolean isRecording = false;
     private File audioFile;
 
+    private VoiceCommandManager voiceCommandManager;
+
     private ActivityResultLauncher<Intent> overlayPermissionLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Check for intent actions (from voice commands)
+        handleIntentActions(getIntent());
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -87,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
         audioRecorder = new AudioRecorder(this);
         groqApiClient = new GroqApiClient();
         handler = new Handler(Looper.getMainLooper());
+
+        // Initialize voice command manager
+        voiceCommandManager = new VoiceCommandManager(this);
+
+        // Start hotword service if enabled
+        if (voiceCommandManager.isCommandsEnabled()) {
+            Intent hotwordIntent = new Intent(this, HotwordService.class);
+            startService(hotwordIntent);
+        }
 
         // Initialize overlay permission launcher
         overlayPermissionLauncher = registerForActivityResult(
@@ -281,12 +296,68 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        // Handle intent actions (from voice commands)
+        handleIntentActions(intent);
+    }
+
+    private void handleIntentActions(Intent intent) {
+        if (intent == null) return;
+
+        String action = intent.getAction();
+        if (action == null) return;
+
+        switch (action) {
+            case "ACTION_START_RECORDING":
+                if (!isRecording) {
+                    startRecording();
+                }
+                break;
+
+            case "ACTION_STOP_RECORDING":
+                if (isRecording) {
+                    stopRecordingAndTranscribe();
+                }
+                break;
+
+            case "ACTION_SAVE_TRANSCRIPTION":
+                // Handle save action if needed
+                break;
+
+            case "ACTION_CANCEL":
+                // Handle cancel action if needed
+                break;
+
+            case "ACTION_ENHANCE":
+                // Handle enhance action if needed
+                break;
+
+            case "ACTION_FORMAT":
+                // Handle format action
+                int formatType = intent.getIntExtra("format_type", 0);
+                // Apply formatting based on type
+                break;
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
         if (id == R.id.action_saved) {
             // Navigate to SavedTranscriptionsActivity
             Intent intent = new Intent(MainActivity.this, SavedTranscriptionsActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_voice_commands) {
+            // Navigate to VoiceCommandSettingsActivity
+            Intent intent = new Intent(MainActivity.this, VoiceCommandSettingsActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_templates) {
+            // Navigate to TemplateSettingsActivity
+            Intent intent = new Intent(MainActivity.this, TemplateSettingsActivity.class);
             startActivity(intent);
             return true;
         } else if (id == R.id.action_about) {

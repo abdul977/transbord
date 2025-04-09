@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
@@ -65,6 +66,16 @@
             android:name=".OnboardingActivity"
             android:exported="false" />
 
+        <!-- Voice Command Settings Activity -->
+        <activity
+            android:name=".VoiceCommandSettingsActivity"
+            android:exported="false" />
+
+        <!-- Template Settings Activity -->
+        <activity
+            android:name=".TemplateSettingsActivity"
+            android:exported="false" />
+
         <!-- Overlay Service -->
         <service
             android:name=".services.OverlayService"
@@ -72,6 +83,13 @@
             android:exported="false"
             android:foregroundServiceType="specialUse"
             android:theme="@style/Theme.Transbord.Overlay" />
+
+        <!-- Hotword Service -->
+        <service
+            android:name=".services.HotwordService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
 
         <!-- Accessibility Service -->
         <service
