@@ -95,12 +95,18 @@ public class MainActivity extends AppCompatActivity {
         handler = new Handler(Looper.getMainLooper());
 
         // Initialize voice command manager
-        voiceCommandManager = new VoiceCommandManager(this);
+        try {
+            voiceCommandManager = new VoiceCommandManager(this);
 
-        // Start hotword service if enabled
-        if (voiceCommandManager.isCommandsEnabled()) {
-            Intent hotwordIntent = new Intent(this, HotwordService.class);
-            startService(hotwordIntent);
+            // Start hotword service if enabled
+            if (voiceCommandManager.isCommandsEnabled()) {
+                Log.d(TAG, "Starting hotword service from MainActivity");
+                Intent hotwordIntent = new Intent(this, HotwordService.class);
+                startService(hotwordIntent);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error initializing voice commands: " + e.getMessage());
+            Toast.makeText(this, "Error initializing voice commands: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
         // Initialize overlay permission launcher

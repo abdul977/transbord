@@ -36,6 +36,8 @@ import java.util.Date;
 
 public class TranscriptionActivity extends AppCompatActivity {
 
+    private static final String TAG = "TranscriptionActivity";
+
     public static final String EXTRA_TRANSCRIPTION_TEXT = "extra_transcription_text";
     public static final String EXTRA_AUDIO_FILE_PATH = "extra_audio_file_path";
     public static final String EXTRA_TRANSCRIPTION_ID = "extra_transcription_id";
@@ -123,14 +125,24 @@ public class TranscriptionActivity extends AppCompatActivity {
                 tvTranscription.setText(transcriptionText);
 
                 // Apply auto-formatting if enabled
-                if (templatePrefs.getBoolean("auto_format_enabled", false)) {
-                    int templateType = templateManager.detectTemplateType(transcriptionText);
-                    if (templateType > 0) {
-                        String formattedText = templateManager.formatText(transcriptionText, templateType);
-                        tvTranscription.setText(formattedText);
-                        transcriptionText = formattedText;
-                        Toast.makeText(this, R.string.template_applied, Toast.LENGTH_SHORT).show();
+                try {
+                    if (templatePrefs.getBoolean("auto_format_enabled", false)) {
+                        Log.d(TAG, "Auto-formatting enabled, detecting template type");
+                        int templateType = templateManager.detectTemplateType(transcriptionText);
+                        Log.d(TAG, "Detected template type: " + templateType);
+                        if (templateType > 0) {
+                            String formattedText = templateManager.formatText(transcriptionText, templateType);
+                            tvTranscription.setText(formattedText);
+                            transcriptionText = formattedText;
+                            Toast.makeText(this, R.string.template_applied, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.d(TAG, "No template detected for auto-formatting");
+                        }
+                    } else {
+                        Log.d(TAG, "Auto-formatting is disabled");
                     }
+                } catch (Exception e) {
+                    Log.e(TAG, "Error applying auto-formatting: " + e.getMessage());
                 }
 
                 // Auto-save if requested (from overlay service)
