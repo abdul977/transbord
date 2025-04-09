@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Premium color palette -->
+    <color name="primary">#1E3A8A</color>
+    <color name="primary_variant">#0F2557</color>
+    <color name="secondary">#E5E7EB</color>
+    <color name="secondary_variant">#D1D5DB</color>
+    <color name="accent">#D4AF37</color>
+    <color name="accent_variant">#B8860B</color>
+
+    <!-- Background colors -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_dark">#121212</color>
+
+    <!-- Text colors -->
+    <color name="text_primary_light">#333333</color>
+    <color name="text_secondary_light">#666666</color>
+    <color name="text_primary_dark">#F8F9FA</color>
+    <color name="text_secondary_dark">#CCCCCC</color>
+
+    <!-- Status colors -->
+    <color name="success">#34D399</color>
+    <color name="error">#EF4444</color>
+    <color name="error_dark">#D32F2F</color>
+    <color name="recording">#FF5252</color>
+    <color name="processing">#3B82F6</color>
+    <color name="warning">#F59E0B</color>
+    <color name="info">#3B82F6</color>
+</resources>

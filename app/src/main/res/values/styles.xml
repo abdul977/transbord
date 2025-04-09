@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Styles -->
+    <style name="TextAppearance.Transbord.Display" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:textSize">@dimen/text_display</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TextAppearance.Transbord.Headline" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textSize">@dimen/text_xxl</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Transbord.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Transbord.Subtitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">@dimen/text_lg</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.Transbord.Body" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">@dimen/text_md</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.Transbord.Caption" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">@dimen/text_sm</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.Transbord.Divider" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">@dimen/text_sm</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.Transbord.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:textAppearance">@style/TextAppearance.Transbord.Body</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/spacing_lg</item>
+        <item name="android:paddingEnd">@dimen/spacing_lg</item>
+        <item name="cornerRadius">@dimen/spacing_md</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.Transbord.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textAppearance">@style/TextAppearance.Transbord.Body</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/spacing_lg</item>
+        <item name="android:paddingEnd">@dimen/spacing_lg</item>
+        <item name="cornerRadius">@dimen/spacing_md</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="strokeColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.Transbord.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAppearance">@style/TextAppearance.Transbord.Body</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.Transbord.Button.WithIcon" parent="Widget.Transbord.Button.Primary">
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/spacing_md</item>
+        <item name="iconSize">18dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="Widget.Transbord.Button.OutlinedWithIcon" parent="Widget.Transbord.Button.Secondary">
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/spacing_md</item>
+        <item name="iconSize">18dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <!-- Card Styles -->
+    <style name="Widget.Transbord.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="contentPadding">@dimen/spacing_md</item>
+    </style>
+
+    <!-- FAB Styles -->
+    <style name="Widget.Transbord.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="fabSize">normal</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="tint">?attr/colorOnPrimary</item>
+        <item name="borderWidth">0dp</item>
+    </style>
+
+    <style name="Widget.Transbord.FloatingActionButton.Large" parent="Widget.Transbord.FloatingActionButton">
+        <item name="fabSize">normal</item>
+        <item name="fabCustomSize">@dimen/fab_size</item>
+    </style>
+
+    <!-- Overlay Service Style -->
+    <style name="Theme.Transbord.Overlay" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_variant</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
+
+    <!-- Shape Appearance for Floating Button -->
+    <style name="ShapeAppearance.Transbord.FloatingButton" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>
