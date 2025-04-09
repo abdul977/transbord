@@ -26,5 +26,5 @@
     <dimen name="fab_size">64dp</dimen>
     <dimen name="card_corner_radius">16dp</dimen>
     <dimen name="card_elevation">4dp</dimen>
-    <dimen name="header_top_padding">48dp</dimen>
+    <dimen name="header_top_padding">12dp</dimen>
 </resources>

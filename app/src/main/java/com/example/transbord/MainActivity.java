@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     private CardView cardStatus;
     private TextView tvStatus;
     private TextView tvTranscription;
-    private ImageView ivSettings;
 
     private AudioRecorder audioRecorder;
     private GroqApiClient groqApiClient;
@@ -80,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         cardStatus = findViewById(R.id.card_status);
         tvStatus = findViewById(R.id.tv_status);
         tvTranscription = findViewById(R.id.tv_transcription);
-        ivSettings = findViewById(R.id.iv_settings);
 
         // Set up edge-to-edge display
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -162,12 +160,6 @@ public class MainActivity extends AppCompatActivity {
         fabRecord.setOnLongClickListener(v -> {
             requestOverlayPermissionAndStartService();
             return true;
-        });
-
-        // Settings button click listener
-        ivSettings.setOnClickListener(v -> {
-            // Show options menu
-            openOptionsMenu();
         });
     }
 
@@ -351,7 +343,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_saved) {
+        if (id == R.id.action_settings) {
+            // Show the settings menu
+            openOptionsMenu();
+            return true;
+        } else if (id == R.id.action_saved) {
             // Navigate to SavedTranscriptionsActivity
             Intent intent = new Intent(MainActivity.this, SavedTranscriptionsActivity.class);
             startActivity(intent);

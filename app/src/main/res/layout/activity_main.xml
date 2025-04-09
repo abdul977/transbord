@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:paddingTop="@dimen/header_top_padding"
+        android:paddingBottom="@dimen/spacing_sm"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
@@ -26,21 +27,13 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
                 android:text="@string/home_title"
+                android:textStyle="bold"
+                android:textColor="?attr/colorPrimary"
                 android:textAppearance="?attr/textAppearanceTitleLarge" />
-
-            <ImageView
-                android:id="@+id/iv_settings"
-                android:layout_width="@dimen/icon_size_sm"
-                android:layout_height="@dimen/icon_size_sm"
-                android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/spacing_md"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:contentDescription="@string/settings"
-                android:focusable="true"
-                android:src="@drawable/ic_settings" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -58,10 +51,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_md"
-            android:layout_marginTop="@dimen/spacing_xl"
+            android:layout_marginTop="@dimen/spacing_lg"
             android:gravity="center"
             android:text="@string/tap_to_record"
             android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -71,10 +66,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_md"
-            android:layout_marginTop="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
             android:gravity="center"
             android:text="@string/hold_to_activate"
-            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:alpha="0.8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_instructions" />
@@ -129,7 +125,9 @@
             android:layout_marginBottom="@dimen/spacing_md"
             android:text="@string/developer_name"
             android:textAppearance="?attr/textAppearanceCaption"
-            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textStyle="italic"
+            android:alpha="0.7"
+            android:textColor="?attr/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
